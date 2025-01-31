@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Enums\Color;
+use App\Enums\Rarity;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,29 +19,29 @@ class CardFactory extends Factory
     public function definition(): array
     {
         return [
-            'availability' => json_encode(['paper', 'mtgo']),
+            'availability' => ['paper', 'mtgo'],
             'borderColor' => $this->faker->randomElement(['black', 'white', 'silver']),
-            'colorIdentity' => json_encode($this->faker->randomElement(Color::cases())),
-            'colors' => json_encode($this->faker->randomElement(Color::cases())),
+            'colorIdentity' => $this->faker->randomElement(Color::cases()),
+            'colors' => $this->faker->randomElement(Color::cases()),
             'convertedManaCost' => $this->faker->randomFloat(1, 0, 10),
-            'finishes' => json_encode(['foil', 'nonfoil']),
+            'finishes' => ['foil', 'nonfoil'],
             'frameVersion' => $this->faker->word,
             'hasFoil' => $this->faker->boolean,
             'hasNonFoil' => $this->faker->boolean,
-            'identifiers' => json_encode(['scryfallId' => $this->faker->uuid]),
+            'identifiers' => ['scryfallId' => $this->faker->uuid],
             'language' => $this->faker->languageCode,
             'layout' => $this->faker->word,
-            'legalities' => json_encode(['standard' => 'legal']),
+            'legalities' => ['standard' => 'legal'],
             'manaValue' => $this->faker->randomFloat(1, 0, 10),
             'name' => $this->faker->word,
             'number' => $this->faker->randomDigitNotNull,
-            'purchaseUrls' => json_encode(['tcgplayer' => $this->faker->url]),
-            'rarity' => $this->faker->randomElement(['common', 'uncommon', 'rare', 'mythic']),
+            'purchaseUrls' => ['tcgplayer' => $this->faker->url],
+            'rarity' => $this->faker->randomElement(Rarity::cases()),
             'setCode' => $this->faker->word,
-            'subtypes' => json_encode([$this->faker->word]),
-            'supertypes' => json_encode([$this->faker->word]),
+            'subtypes' => [$this->faker->word],
+            'supertypes' => [$this->faker->word],
             'type' => $this->faker->word,
-            'types' => json_encode([$this->faker->word]),
+            'types' => [$this->faker->word],
             'uuid' => $this->faker->uuid,
         ];
     }

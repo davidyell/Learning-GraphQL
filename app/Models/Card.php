@@ -184,4 +184,39 @@ class Card extends Model
         'variations',
         'watermark',
     ];
+
+    protected function casts(): array
+    {
+        return [
+            'artistIds' => 'array',
+            'attractionLights' => 'array',
+            'availability' => 'array',
+            'boosterTypes' => 'array',
+            'cardParts' => 'array',
+            'colorIdentity' => 'array',
+            'colorIndicator' => 'array',
+            'colors' => 'array',
+            'finishes' => 'array',
+            'foreignData' => 'array',
+            'frameEffects' => 'array',
+            'identifiers' => 'array',
+            'keywords' => 'array',
+            'leadershipSkills' => 'array',
+            'legalities' => 'array',
+            'originalPrintings' => 'array',
+            'otherFaceIds' => 'array',
+            'printings' => 'array',
+            'promoTypes' => 'array',
+            'purchaseUrls' => 'array',
+            'relatedCards' => 'array',
+            'rebalancedPrintings' => 'array',
+            'rulings' => 'array',
+            'sourceProducts' => 'array',
+            'subsets' => 'array',
+            'subtypes' => 'array',
+            'supertypes' => 'array',
+            'types' => 'array',
+            'variations' => 'array',
+        ];
+    }
 }

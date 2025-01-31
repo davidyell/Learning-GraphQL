@@ -1,10 +1,9 @@
 <?php
 
+use App\Livewire\CardIndex;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::redirect('/', '/login');
 
 Route::middleware([
     'auth:sanctum',
@@ -14,4 +13,6 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+
+    Route::get('/cards', CardIndex::class)->name('card.index');
 });
