@@ -1,5 +1,7 @@
 <?php
 
+namespace Tests\Feature\Livewire;
+
 use App\Livewire\CardIndex;
 use Livewire\Livewire;
 use Tests\TestCase;
