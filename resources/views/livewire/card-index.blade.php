@@ -23,7 +23,7 @@
                                         </tr>
                                     </thead>
                                     <tbody class="divide-y divide-gray-200">
-                                        @foreach ($this->cards as $card)
+                                        @foreach ($cards as $card)
                                         <tr>
                                             <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0">{{ $card->name }}</td>
                                             <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ implode(', ', $card->types) }}</td>
@@ -39,6 +39,10 @@
                                         @endforeach
                                     </tbody>
                                 </table>
+
+                                <div class="p-4">
+                                    {{ $cards->links('vendor.pagination.tailwind') }}
+                                </div>
                             </div>
                         </div>
                     </div>
