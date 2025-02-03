@@ -86,41 +86,96 @@ type Card {
     watermark: String
 }
 
-type Query {
-    cards: [Card!]! @all
+extend type Query {
+    cards: [Card!]! @paginate
     card(id: ID! @whereKey): Card @find
 }
 
-type Mutation {
+extend type Mutation {
     createCard(
+        artist: String
         artistIds: [String]
+        asciiName: String
         attractionLights: [String]
-        availability: [String]
+        availability: [String]!
         boosterTypes: [String]
+        borderColor: String!
         cardParts: [String]
-        colorIdentity: [String]
+        colorIdentity: [String]!
         colorIndicator: [String]
-        colors: [String]
-        finishes: [String]
+        colors: [String]!
+        convertedManaCost: Float!
+        defense: String
+        duelDeck: String
+        edhrecRank: Int
+        edhrecSaltiness: Float
+        faceConvertedManaCost: Float
+        faceFlavorName: String
+        faceManaValue: Float
+        faceName: String
+        finishes: [String]!
+        flavorName: String
+        flavorText: String
         foreignData: [String]
         frameEffects: [String]
-        identifiers: [String]
+        frameVersion: String!
+        hand: String
+        hasAlternativeDeckLimit: Boolean
+        hasContentWarning: Boolean
+        hasFoil: Boolean!
+        hasNonFoil: Boolean!
+        identifiers: [String]!
+        isAlternative: Boolean
+        isFullArt: Boolean
+        isFunny: Boolean
+        isOnlineOnly: Boolean
+        isOversized: Boolean
+        isPromo: Boolean
+        isRebalanced: Boolean
+        isReprint: Boolean
+        isReserved: Boolean
+        isStarter: Boolean
+        isStorySpotlight: Boolean
+        isTextless: Boolean
+        isTimeshifted: Boolean
         keywords: [String]
+        language: String!
+        layout: String!
         leadershipSkills: [String]
-        legalities: [String]
+        legalities: [String]!
+        life: String
+        loyalty: String
+        manaCost: String
+        manaValue: Float!
+        name: String!
+        number: String!
         originalPrintings: [String]
+        originalReleaseDate: String
+        originalText: String
+        originalType: String
         otherFaceIds: [String]
+        power: String
         printings: [String]
         promoTypes: [String]
-        purchaseUrls: [String]
+        purchaseUrls: [String]!
+        rarity: String!
         relatedCards: [String]
         rebalancedPrintings: [String]
         rulings: [String]
+        securityStamp: String
+        setCode: String!
+        side: String
+        signature: String
         sourceProducts: [String]
         subsets: [String]
-        subtypes: [String]
-        supertypes: [String]
-        types: [String]
+        subtypes: [String]!
+        supertypes: [String]!
+        text: String
+        toughness: String
+        type: String!
+        types: [String]!
+        uuid: String!
         variations: [String]
+        watermark: String
     ): Card @create
 }

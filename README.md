@@ -16,10 +16,16 @@ A graphql api for Magic the Gathering Cards!
 
 Visit http://localhost
 
+## Fake data
+
+There is a card seeder which will create 100 random cards, using Faker data.
+
+`./vendor/bin/sail artisan db:seed --seeder CardSeeder`
+
 ## Real data
 
 If you want to use actual data you can download the 'Standard' format json from https://mtgjson.com/downloads/all-files/#standard 
-and save it into the `/app/database` folder and run the seeder `artisan db:seed --seeder StandardSeeder` which will 
+and save it into the `/app/database` folder and run the seeder `artisan db:seed -- StandardSeeder` which will 
 populate the database with all the cards from the Standard format.
 
 [More info on WhatsInStandard.com](https://whatsinstandard.com/)
@@ -31,16 +37,20 @@ then visit http://localhost/graphiql
 
 ### Example queries
 
-Get all the cards, but only a few fields.
+Get all the cards, but only a few fields, paginated by 20 per page on page 4
 
 ```graphql
 {
-    cards {
-        id
-        name
-        colorIdentity
-        rarity
-        convertedManaCost
+    cards(first: 20, page: 4) {
+        data {
+            id
+            name
+            types
+        }
+        paginatorInfo {
+            currentPage
+            lastPage
+        }
     }
 }
 ```
@@ -55,6 +65,19 @@ Get just a single card
         flavorName
         flavorText
     }
+}
+```
+
+Create a new user
+
+```graphql
+mutation {
+  createUser(name:"David", email:"neon1024@gmail.com", password:"GiantBananaBoat") {
+    name
+    email
+    created_at
+    updated_at
+  }
 }
 ```
 
