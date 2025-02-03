@@ -11,9 +11,18 @@ A graphql api for Magic the Gathering Cards!
 -   Clone repo
 -   `composer install`
 -   `./vendor/bin/sail up -d`
+-   `./vendor/bin/sail artisan migrate:fresh --seed`
 -   `./vendor/bin/sail npm run build`
 
 Visit http://localhost
+
+## Real data
+
+If you want to use actual data you can download the 'Standard' format json from https://mtgjson.com/downloads/all-files/#standard 
+and save it into the `/app/database` folder and run the seeder `artisan db:seed --seeder StandardSeeder` which will 
+populate the database with all the cards from the Standard format.
+
+[More info on WhatsInStandard.com](https://whatsinstandard.com/)
 
 ## GraphQL
 

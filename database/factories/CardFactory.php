@@ -18,11 +18,13 @@ class CardFactory extends Factory
      */
     public function definition(): array
     {
+        $colors = $this->faker->randomElements(array_map(fn ($color) => $color->name, Color::cases()), rand(1, 3), false);
+
         return [
             'availability' => ['paper', 'mtgo'],
             'borderColor' => $this->faker->randomElement(['black', 'white', 'silver']),
-            'colorIdentity' => $this->faker->randomElement(Color::cases()),
-            'colors' => $this->faker->randomElement(Color::cases()),
+            'colorIdentity' => $colors,
+            'colors' => $colors,
             'convertedManaCost' => $this->faker->randomFloat(1, 0, 10),
             'finishes' => ['foil', 'nonfoil'],
             'frameVersion' => $this->faker->word,
