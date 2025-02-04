@@ -1,43 +1,47 @@
 # Learning GraphQL with Laravel and Livewire
 
-This is an example app to learn more about creating GraphQL Api endpoints using Laravel.
+This is an example app to learn more about creating GraphQL API endpoints using Laravel.
 
 ## What is it?
 
-A graphql api for Magic the Gathering Cards!
+A GraphQL API for Magic: The Gathering cards!
+
+## Requirements
+
+* PHP 8.4
+* Composer
+* Docker
 
 ## Install
 
--   Clone repo
--   `composer install`
--   `./vendor/bin/sail up -d`
--   `./vendor/bin/sail artisan migrate:fresh --seed`
--   `./vendor/bin/sail npm run build`
+- Clone the repo
+- `composer install`
+- `./vendor/bin/sail up -d`
+- `./vendor/bin/sail artisan migrate:fresh --seed`
+- `./vendor/bin/sail npm run build`
 
 Visit http://localhost
 
 ## Fake data
 
-There is a card seeder which will create 100 random cards, using Faker data.
+There is a card seeder that will create 100 random cards using Faker data.
 
 `./vendor/bin/sail artisan db:seed --seeder FakeCardSeeder`
 
 ## Real data
 
-If you want to use actual data you will need to download two files.
+If you want to use actual data, you will need to download two files:
 
-* The 'Standard' format json from https://mtgjson.com/downloads/all-files/#standard (39mb)
-* the 'SetList' format json from https://mtgjson.com/downloads/all-files/#setlist (9mb)
+* The 'Standard' JSON from https://mtgjson.com/downloads/all-files/#standard (39MB)
+* The 'SetList' JSON from https://mtgjson.com/downloads/all-files/#setlist (9MB)
 
-Save them into the `/app/database` folder and run the seeder `artisan db:seed StandardSeeder` which will 
-populate the database with all the cards from the Standard format.
+Save them into the `/app/database` folder and run the seeder `artisan db:seed StandardSeeder`, which will populate the database with all the cards from the Standard format.
 
 [More info on WhatsInStandard.com](https://whatsinstandard.com/)
 
 ## GraphQL
 
-The project includes [GraphIQL](https://github.com/mll-lab/laravel-graphiql), you can make use of the client by installing Composer `dev` dependancies and
-then visit http://localhost/graphiql
+The project includes [GraphIQL](https://github.com/mll-lab/laravel-graphiql). You can make use of the client by installing Composer `dev` dependencies and then visiting http://localhost/graphiql.
 
 ### Example queries
 
@@ -129,10 +133,23 @@ Search for sets which contain `kami` anywhere in their name
 
 ```graphql
 {
-  setName(name: "kami") {
+  setNameContains(name: "kami") {
     name
     block
     code
+  }
+}
+```
+
+Find all the red dragons
+
+```graphql
+{
+  cardSearch(name: "dragon", colors: ["R"]) {
+    id
+    name
+    type
+    colors
   }
 }
 ```

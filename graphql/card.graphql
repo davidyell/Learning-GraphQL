@@ -90,6 +90,11 @@ type Card {
 extend type Query {
     cards: [Card!]! @paginate
     card(id: ID! @whereKey): Card @find
+    cardNameContains(name: String @like(template: "%{}%")): [Card]! @all
+    cardSearch(
+        name: String @like(template: "%{}%")
+        colors: [String]! @whereJsonContains
+    ): [Card!]! @all
 }
 
 extend type Mutation {

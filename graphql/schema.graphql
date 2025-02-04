@@ -1,3 +1,6 @@
 #import user.graphql
 #import card.graphql
 #import set.graphql
+
+type Query
+type Mutation
