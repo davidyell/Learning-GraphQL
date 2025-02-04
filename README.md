@@ -109,6 +109,34 @@ Get a list of the first 10 sets, and their parent sets.
 }
 ```
 
+Get a single set and cards in that set.
+
+```graphql
+{
+  set(code: "BIG") {
+    name
+    code
+    cards {
+      name
+      manaCost
+      type
+    }
+  }
+}
+```
+
+Search for sets which contain `kami` anywhere in their name
+
+```graphql
+{
+  setName(name: "kami") {
+    name
+    block
+    code
+  }
+}
+```
+
 ## References
 
 🎓 Learn to play Magic the Gathering! https://magic.wizards.com/en/intro

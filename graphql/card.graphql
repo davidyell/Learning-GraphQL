@@ -84,7 +84,7 @@ type Card {
     uuid: String!
     variations: [String]
     watermark: String
-    set: Set
+    set: Set @belongsTo
 }
 
 extend type Query {

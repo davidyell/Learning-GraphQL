@@ -26,11 +26,12 @@ type Set {
     tokenSetCode: String
     translations: [String]
     type: String!
-    cards: [Card!]!
-    parent: Set
+    cards: [Card!]! @hasMany
+    parent: Set @belongsTo
 }
 
 extend type Query {
     sets: [Set!]! @paginate
-    set(id: ID! @whereKey): Set @find
+    set(code: String @eq): Set @find
+    setNameContains(name: String @like(template: "%{}%")): [Set]! @all
 }
