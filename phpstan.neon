@@ -8,3 +8,6 @@ parameters:
         - app/
 
     level: 5
+
+    stubFiles:
+        - vendor/nuwave/lighthouse/_ide_helper.php

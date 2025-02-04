@@ -4,7 +4,8 @@
         "bootstrap",
         "config",
         "database/migrations",
-        "public"
+        "public",
+        "graphql"
     ],
     "rules": {
         "class_definition": {
