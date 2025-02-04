@@ -1,4 +1,5 @@
 @import 'mana-font/css/mana.min.css';
+@import 'keyrune/css/keyrune.min.css';
 
 @tailwind base;
 @tailwind components;
