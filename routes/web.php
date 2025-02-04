@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use App\Livewire\CardIndex;
+use App\Livewire\SetIndex;
 use Illuminate\Support\Facades\Route;
 
 Route::redirect('/', '/login');
@@ -16,5 +17,6 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 
+    Route::get('/sets', SetIndex::class)->name('set.index');
     Route::get('/cards', CardIndex::class)->name('card.index');
 });

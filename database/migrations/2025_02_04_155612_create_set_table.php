@@ -32,7 +32,7 @@ return new class extends Migration
             $table->string('mcmName')->nullable();
             $table->string('mtgoCode')->nullable();
             $table->string('name');
-            $table->string('parentCode')->nullable();
+            $table->string('parentCode')->nullable()->index();
             $table->date('releaseDate');
             $table->json('sealedProduct')->nullable();
             $table->integer('tcgplayerGroupId')->nullable();

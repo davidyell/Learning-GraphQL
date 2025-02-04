@@ -20,17 +20,17 @@ Visit http://localhost
 
 There is a card seeder which will create 100 random cards, using Faker data.
 
-`./vendor/bin/sail artisan db:seed --seeder CardSeeder`
+`./vendor/bin/sail artisan db:seed --seeder FakeCardSeeder`
 
 ## Real data
 
-If you want to use actual data you can download the 'Standard' format json from https://mtgjson.com/downloads/all-files/#standard 
-and save it into the `/app/database` folder and run the seeder `artisan db:seed StandardSeeder` which will 
-populate the database with all the cards from the Standard format.
+If you want to use actual data you will need to download two files.
 
-To have the Sets also, you'll need to download the `SetList` from https://mtgjson.com/downloads/all-files/#setlist and
-save it into the `/app/database` folder and run the seeder `artisan db:seed SetSeeder` which will
-populate the database with the card set data.
+* The 'Standard' format json from https://mtgjson.com/downloads/all-files/#standard (39mb)
+* the 'SetList' format json from https://mtgjson.com/downloads/all-files/#setlist (9mb)
+
+Save them into the `/app/database` folder and run the seeder `artisan db:seed StandardSeeder` which will 
+populate the database with all the cards from the Standard format.
 
 [More info on WhatsInStandard.com](https://whatsinstandard.com/)
 
@@ -41,15 +41,21 @@ then visit http://localhost/graphiql
 
 ### Example queries
 
-Get all the cards, but only a few fields, paginated by 20 per page on page 4
+Get all the cards, but only a few fields, paginated by 20 per page on page 4, and include the set the card belongs to.
 
 ```graphql
 {
-    cards(first: 20, page: 4) {
+    cards(first:20, page: 4) {
         data {
             id
             name
             types
+            set {
+                block
+                mcmName
+                code
+                parentCode
+            }
         }
         paginatorInfo {
             currentPage
@@ -81,6 +87,24 @@ mutation {
     email
     created_at
     updated_at
+  }
+}
+```
+
+Get a list of the first 10 sets, and their parent sets.
+
+```graphql
+{
+  sets(first: 10, page: 1) {
+    data {
+      code
+      name
+      parentCode
+      parent {
+        code
+        name
+      }
+    }
   }
 }
 ```

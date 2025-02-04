@@ -32,5 +32,7 @@ class StandardSeeder extends Seeder
                 $cardModel->save();
             }
         }
+
+        $this->call([SetSeeder::class]);
     }
 }

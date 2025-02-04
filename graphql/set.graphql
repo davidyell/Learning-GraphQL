@@ -1,0 +1,36 @@
+type Set {
+    baseSetSize: Int!
+    block: String
+    cardsphereSetId: Int
+    code: String!
+    codeV3: String
+    decks: [String]
+    isForeignOnly: Boolean
+    isFoilOnly: Boolean!
+    isNonFoilOnly: Boolean
+    isOnlineOnly: Boolean!
+    isPaperOnly: Boolean
+    isPartialPreview: Boolean
+    keyruneCode: String!
+    languages: [String]
+    mcmId: Int
+    mcmIdExtras: Int
+    mcmName: String
+    mtgoCode: String
+    name: String!
+    parentCode: String
+    releaseDate: String!
+    sealedProduct: [String]
+    tcgplayerGroupId: Int
+    totalSetSize: Int!
+    tokenSetCode: String
+    translations: [String]
+    type: String!
+    cards: [Card!]!
+    parent: Set
+}
+
+extend type Query {
+    sets: [Set!]! @paginate
+    set(id: ID! @whereKey): Set @find
+}

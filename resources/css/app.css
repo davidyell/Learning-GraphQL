@@ -8,6 +8,6 @@
     display: none;
 }
 
-i.ms.ms-cost[class*="ms-"] {
+span.mana-cost i.ms.ms-cost[class*="ms-"] {
     margin-inline-start: 0 !important;
 }
