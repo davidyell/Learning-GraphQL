@@ -27,14 +27,16 @@
                                         <tr>
                                             <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0">{{ $card->name }}</td>
                                             <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ implode(', ', $card->types) }}</td>
-                                            <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ $card->setCode }}</td>
+                                            <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ $card->set->name }}</td>
                                             <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                                                <x-card-rarity-badge :rarity="$card->rarity" />
+                                                <x-mtg.card-rarity-badge :rarity="$card->rarity" />
                                             </td>
                                             <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                                                <x-card-color-badge :colors="$card->colors" />
+                                                <x-mtg.card-color-badge :colors="$card->colors" />
                                             </td>
-                                            <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ $card->manaValue }}</td>
+                                            <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500" data-converted-mana-cost="{{ $card->convertedManaCost }}">
+                                                <x-mtg.card-casting-cost :mana-cost="$card->manaCost" />
+                                            </td>
                                         </tr>
                                         @endforeach
                                     </tbody>

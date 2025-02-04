@@ -24,3 +24,6 @@ yarn-error.log
 
 # Ignore the data as we want to download it
 /database/Standard.json
+/database/SetList.json
+
+.DS_Store

@@ -25,8 +25,12 @@ There is a card seeder which will create 100 random cards, using Faker data.
 ## Real data
 
 If you want to use actual data you can download the 'Standard' format json from https://mtgjson.com/downloads/all-files/#standard 
-and save it into the `/app/database` folder and run the seeder `artisan db:seed -- StandardSeeder` which will 
+and save it into the `/app/database` folder and run the seeder `artisan db:seed StandardSeeder` which will 
 populate the database with all the cards from the Standard format.
+
+To have the Sets also, you'll need to download the `SetList` from https://mtgjson.com/downloads/all-files/#setlist and
+save it into the `/app/database` folder and run the seeder `artisan db:seed SetSeeder` which will
+populate the database with the card set data.
 
 [More info on WhatsInStandard.com](https://whatsinstandard.com/)
 

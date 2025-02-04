@@ -1,0 +1,20 @@
+{
+    "preset": "laravel",
+    "exclude": [
+        "bootstrap",
+        "config",
+        "database/migrations",
+        "public"
+    ],
+    "rules": {
+        "class_definition": {
+            "single_line": false
+        },
+        "php_unit_method_casing": {
+            "case": "snake_case"
+        },
+        "declare_strict_types": true,
+        "single_import_per_statement": true,
+        "single_trait_insert_per_statement": true
+    }
+}

@@ -1,9 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
  * Class Card
@@ -218,5 +221,10 @@ class Card extends Model
             'types' => 'array',
             'variations' => 'array',
         ];
+    }
+
+    public function set(): BelongsTo
+    {
+        return $this->belongsTo(Set::class, 'setCode', 'code');
     }
 }

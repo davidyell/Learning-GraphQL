@@ -85,7 +85,7 @@ class CreateCardsTable extends Migration
             $table->json('rebalancedPrintings')->nullable();
             $table->json('rulings')->nullable();
             $table->string('securityStamp')->nullable();
-            $table->string('setCode');
+            $table->string('setCode')->index();
             $table->string('side')->nullable();
             $table->string('signature')->nullable();
             $table->json('sourceProducts')->nullable();
