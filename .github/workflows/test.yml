@@ -1,0 +1,74 @@
+name: Test
+
+on:
+  pull_request:
+    paths-ignore:
+      - 'README.md'
+      - '*.graphql'
+      - 'graphql/*'
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+env:
+  DB_DATABASE: laravel_test
+  DB_USER: root
+  DB_PASSWORD: root
+  DB_HOST: 127.0.0.1
+
+jobs:
+  test:
+    name: Test suite
+
+    runs-on: 'ubuntu-latest'
+
+    steps:
+      - name: Start MySQL
+        run: |
+          sudo systemctl start mysql.service
+          mysql -e 'CREATE DATABASE ${{ env.DB_DATABASE }};' -u${{ env.DB_USER }} -p${{ env.DB_PASSWORD }}
+
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.4'
+          coverage: none
+
+      - name: Prepare the environment
+        run: cp .env.example .env
+
+      - name: Get composer cache directory
+        id: composer-cache
+        run: echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
+
+      - name: Setup composer cache
+        uses: actions/cache@v4
+        with:
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+          restore-keys: ${{ runner.os }}-composer-
+
+      - name: Install composer dependencies
+        run: composer install --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
+
+      - name: Generate APP_KEY
+        run: php artisan key:generate --env=testing
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+
+      - name: Install Node dependencies
+        run: npm ci
+
+      - name: Run NPM Build
+        run: npm run build
+
+      - name: Run PHP Tests
+        run: composer test:ci
