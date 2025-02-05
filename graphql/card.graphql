@@ -92,7 +92,7 @@ extend type Query {
     card(id: ID! @whereKey): Card @find
     cardNameContains(name: String @like(template: "%{}%")): [Card]! @all
     cardSearch(
-        name: String @like(template: "%{}%")
+        name: String
         colors: [String]!
     ): [Card!]! @field(resolver: "App\\GraphQL\\Resolvers\\CardSearchResolver@resolve")
 }

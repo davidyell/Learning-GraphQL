@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\GraphQL\Resolvers;
@@ -12,6 +13,10 @@ class CardSearchResolver
     public function resolve(mixed $root, array $args, GraphQLContext $context, ResolveInfo $resolveInfo)
     {
         $query = Card::query();
+
+        if (isset($args['name'])) {
+            $query->where('name', 'like', '%'.$args['name'].'%');
+        }
 
         if (isset($args['colors'])) {
             $colors = $args['colors'];
