@@ -13,8 +13,8 @@ on:
 
 env:
   DB_DATABASE: laravel_test
-  DB_USER: sail
-  DB_PASSWORD: password
+  DB_USER: root
+  DB_PASSWORD: root
   DB_HOST: 127.0.0.1
 
 jobs:
@@ -27,10 +27,7 @@ jobs:
       - name: Start MySQL
         run: |
           sudo systemctl start mysql.service
-          mysql -e "CREATE USER IF NOT EXISTS '${{ env.DB_USER }}'@'${{ env.DB_HOST }}' IDENTIFIED BY '${{ env.DB_PASSWORD }}';"
-          mysql -e "GRANT ALL PRIVILEGES ON *.* TO '${{ env.DB_USER }}'@'${{ env.DB_HOST }}';"
-          mysql -e 'CREATE DATABASE IF NOT EXISTS ${{ env.DB_DATABASE }};' -u${{ env.DB_USER }} -p${{ env.DB_PASSWORD }}
-          mysql -e 'FLUSH PRIVILEGES;'
+          mysql -e 'CREATE DATABASE ${{ env.DB_DATABASE }};' -u${{ env.DB_USER }} -p${{ env.DB_PASSWORD }}
 
       - name: Checkout
         uses: actions/checkout@v4
@@ -42,7 +39,9 @@ jobs:
           coverage: none
 
       - name: Prepare the environment
-        run: cp .env.example .env
+        run: |
+          cp .env.example .env
+          sed -i -e 's/^DB_DATABASE=.*/DB_DATABASE=${{ env.DB_DATABASE }}/' -e 's/^DB_USERNAME=.*/DB_USERNAME=${{ env.DB_USER }}/' -e 's/^DB_PASSWORD=.*/DB_PASSWORD=${{ env.DB_PASSWORD }}/' .env
 
       - name: Get composer cache directory
         id: composer-cache
