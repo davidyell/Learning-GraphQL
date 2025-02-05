@@ -6,6 +6,7 @@ on:
       - 'README.md'
       - '*.graphql'
       - 'graphql/*'
+      - 'docker/*'
   push:
     branches:
       - main

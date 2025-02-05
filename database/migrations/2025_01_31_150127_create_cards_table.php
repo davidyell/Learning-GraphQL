@@ -69,7 +69,7 @@ class CreateCardsTable extends Migration
             $table->string('loyalty')->nullable();
             $table->string('manaCost')->nullable();
             $table->float('manaValue');
-            $table->string('name');
+            $table->string('name')->index();
             $table->string('number');
             $table->json('originalPrintings')->nullable();
             $table->string('originalReleaseDate')->nullable();
@@ -95,7 +95,7 @@ class CreateCardsTable extends Migration
             $table->text('text')->nullable();
             $table->string('toughness')->nullable();
             $table->string('type');
-            $table->json('types');
+            $table->json('types'); // SQLSTATE[42000]: Syntax error or access violation: 3152 JSON column 'types' supports indexing only via generated columns on a specified JSON path
             $table->uuid('uuid');
             $table->json('variations')->nullable();
             $table->string('watermark')->nullable();

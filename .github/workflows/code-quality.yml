@@ -6,6 +6,7 @@ on:
       - 'README.md'
       - '*.graphql'
       - 'graphql/*'
+      - 'docker/*'
   workflow_dispatch:
 
 jobs:
