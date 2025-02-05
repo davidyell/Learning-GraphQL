@@ -10,7 +10,6 @@ use Tests\TestCase;
 
 class SetIndexTest extends TestCase
 {
-    /** @test */
     public function renders_successfully()
     {
         Livewire::test(SetIndex::class)

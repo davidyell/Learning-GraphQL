@@ -93,8 +93,8 @@ extend type Query {
     cardNameContains(name: String @like(template: "%{}%")): [Card]! @all
     cardSearch(
         name: String @like(template: "%{}%")
-        colors: [String]! @whereJsonContains
-    ): [Card!]! @all
+        colors: [String]!
+    ): [Card!]! @field(resolver: "App\\GraphQL\\Resolvers\\CardSearchResolver@resolve")
 }
 
 extend type Mutation {
