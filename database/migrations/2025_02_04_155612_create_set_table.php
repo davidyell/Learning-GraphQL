@@ -31,12 +31,12 @@ return new class extends Migration
             $table->integer('mcmIdExtras')->nullable();
             $table->string('mcmName')->nullable();
             $table->string('mtgoCode')->nullable();
-            $table->string('name');
+            $table->string('name')->index();
             $table->string('parentCode')->nullable()->index();
-            $table->date('releaseDate');
+            $table->date('releaseDate')->index();
             $table->json('sealedProduct')->nullable();
             $table->integer('tcgplayerGroupId')->nullable();
-            $table->integer('totalSetSize');
+            $table->integer('totalSetSize')->index();
             $table->string('tokenSetCode')->nullable();
             $table->json('translations');
             $table->string('type');
