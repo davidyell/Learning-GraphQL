@@ -10,7 +10,7 @@ use Tests\TestCase;
 
 class CardIndexTest extends TestCase
 {
-    public function cards_component_renders()
+    public function test_card_component_renders()
     {
         Livewire::test(CardIndex::class)
             ->assertStatus(200);

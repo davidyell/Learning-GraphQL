@@ -13,8 +13,8 @@ on:
 
 env:
   DB_DATABASE: laravel_test
-  DB_USER: root
-  DB_PASSWORD: root
+  DB_USER: sail
+  DB_PASSWORD: password
   DB_HOST: 127.0.0.1
 
 jobs:
@@ -27,7 +27,10 @@ jobs:
       - name: Start MySQL
         run: |
           sudo systemctl start mysql.service
-          mysql -e 'CREATE DATABASE ${{ env.DB_DATABASE }};' -u${{ env.DB_USER }} -p${{ env.DB_PASSWORD }}
+          mysql -e "CREATE USER IF NOT EXISTS '${{ env.DB_USER }}'@'${{ env.DB_HOST }}' IDENTIFIED BY '${{ env.DB_PASSWORD }}';"
+          mysql -e "GRANT ALL PRIVILEGES ON *.* TO '${{ env.DB_USER }}'@'${{ env.DB_HOST }}';"
+          mysql -e 'CREATE DATABASE IF NOT EXISTS ${{ env.DB_DATABASE }};' -u${{ env.DB_USER }} -p${{ env.DB_PASSWORD }}
+          mysql -e 'FLUSH PRIVILEGES;'
 
       - name: Checkout
         uses: actions/checkout@v4
