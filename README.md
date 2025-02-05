@@ -2,6 +2,9 @@
 
 This is an example app to learn more about creating GraphQL API endpoints using Laravel.
 
+![tests](https://github.com/davidyell/Learning-GraphQL/actions/workflows/test.yml/badge.svg)
+![quality](https://github.com/davidyell/Learning-GraphQL/actions/workflows/code-quality.yml/badge.svg)
+
 ## What is it?
 
 A GraphQL API for Magic: The Gathering cards!
