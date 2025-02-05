@@ -1,7 +1,8 @@
 @php use Illuminate\Support\Str; @endphp
-@props(['rarity'])
 
 @php
+    $rarity = $getRecord()->rarity;
+
     $colorClasses = [
         'common' => 'bg-white text-gray-700 ring-gray-700/10',
         'uncommon' => 'bg-slate-50 text-slate-700 ring-slate-700/10',
