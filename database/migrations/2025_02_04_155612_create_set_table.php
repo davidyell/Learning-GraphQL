@@ -39,7 +39,7 @@ return new class extends Migration
             $table->integer('totalSetSize')->index();
             $table->string('tokenSetCode')->nullable();
             $table->json('translations');
-            $table->string('type');
+            $table->string('type')->index();
             $table->timestamps();
         });
     }
