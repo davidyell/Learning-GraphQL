@@ -19,6 +19,7 @@
         "nuwave/lighthouse": "^6.49.1"
     },
     "require-dev": {
+        "brianium/paratest": "^7.7",
         "fakerphp/faker": "^1.24.1",
         "larastan/larastan": "^3.0.2",
         "laravel/pail": "^1.2.2",
@@ -62,7 +63,10 @@
             "npx concurrently -c \"#93c5fd,#c4b5fd,#fb7185,#fdba74\" \"php artisan serve\" \"php artisan queue:listen --tries=1\" \"php artisan pail --timeout=0\" \"npm run dev\" --names=server,queue,logs,vite"
         ],
         "pint:fix": "./vendor/bin/pint",
-        "larastan": "./vendor/bin/phpstan analyse --ansi"
+        "larastan": "./vendor/bin/phpstan analyse --ansi",
+        "test": "@php artisan test",
+        "test:ci": "@php artisan test -p --stop-on-defect",
+        "precommit": ["@pint:fix", "@larastan", "@test"]
     },
     "extra": {
         "laravel": {
