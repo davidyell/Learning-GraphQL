@@ -164,3 +164,5 @@ Find all the red dragons
 🙅 Not officially affiliated or endorsed by Wizards of the Coast or Magic the Gathering
 
 🙇‍♂️ Thanks to MTGJSON for their free data https://mtgjson.com/downloads/all-files/
+
+🎁 Thanks to Andrew Gioia for his excellent mana & keyrune packages https://github.com/andrewgioia/
