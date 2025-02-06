@@ -48,6 +48,9 @@ return [
             // Use Sanctum to check tokens
             'auth:sanctum',
 
+            // Add api middleware
+            'api',
+
             // Use the middleware to get the tokens
             EnsureFrontendRequestsAreStateful::class,
         ],
