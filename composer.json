@@ -14,7 +14,7 @@
         "filament/tables": "^3.2",
         "laravel/framework": "^11.41.3",
         "laravel/jetstream": "^5.3.4",
-        "laravel/sanctum": "^4.0.8",
+        "laravel/sanctum": "^4.0",
         "laravel/tinker": "^2.10.1",
         "livewire/livewire": "^3.5.19",
         "nuwave/lighthouse": "^6.49.1"
