@@ -1,0 +1,180 @@
+/**
+ * Fixes for the Tailwind ms-3 vs ManaFont ms-3
+ *
+ * This file was generated mostly by AI
+ */
+span.mana-cost i.ms.ms-cost[class*="ms-"] {
+    margin-inline-start: 0 !important;
+}
+
+.ms-2 {
+    margin-inline-start: .5rem;
+}
+.ms-2:before {
+    content: none;
+}
+.ms-cost.ms.ms-2::before {
+    content: "\e607";
+}
+.ms-3 {
+    margin-inline-start: .75rem;
+}
+.ms-3:before {
+    content: none;
+}
+.ms-cost.ms.ms-3::before {
+    content: "\e608";
+}
+.ms-4 {
+    margin-inline-start: 1rem;
+}
+.ms-4:before {
+    content: none;
+}
+.ms-cost.ms.ms-4::before {
+    content: "\e609";
+}
+.ms-5 {
+    margin-inline-start: 1.25rem;
+}
+.ms-5:before {
+    content: none;
+}
+.ms-cost.ms.ms-5::before {
+    content: "\e60a";
+}
+.ms-6 {
+    margin-inline-start: 1.5rem;
+}
+.ms-6:before {
+    content: none;
+}
+.ms-cost.ms.ms-6::before {
+    content: "\e60b";
+}
+.ms-7 {
+    margin-inline-start: 1.75rem;
+}
+.ms-7:before {
+    content: none;
+}
+.ms-cost.ms.ms-7::before {
+    content: "\e60c";
+}
+.ms-8 {
+    margin-inline-start: 2rem;
+}
+.ms-8:before {
+    content: none;
+}
+.ms-cost.ms.ms-8::before {
+    content: "\e60d";
+}
+.ms-9 {
+    margin-inline-start: 2.25rem;
+}
+.ms-9:before {
+    content: none;
+}
+.ms-cost.ms.ms-9::before {
+    content: "\e60e";
+}
+.ms-10 {
+    margin-inline-start: 2.5rem;
+}
+.ms-10:before {
+    content: none;
+}
+.ms-cost.ms.ms-10::before {
+    content: "\e60f";
+}
+.ms-11 {
+    margin-inline-start: 2.75rem;
+}
+.ms-11:before {
+    content: none;
+}
+.ms-cost.ms.ms-11::before {
+    content: "\e610";
+}
+.ms-12 {
+    margin-inline-start: 3rem;
+}
+.ms-12:before {
+    content: none;
+}
+.ms-cost.ms.ms-12::before {
+    content: "\e611";
+}
+.ms-13 {
+    margin-inline-start: 3.25rem;
+}
+.ms-13:before {
+    content: none;
+}
+.ms-cost.ms.ms-13::before {
+    content: "\e612";
+}
+.ms-14 {
+    margin-inline-start: 3.5rem;
+}
+.ms-14:before {
+    content: none;
+}
+.ms-cost.ms.ms-14::before {
+    content: "\e613";
+}
+.ms-15 {
+    margin-inline-start: 3.75rem;
+}
+.ms-15:before {
+    content: none;
+}
+.ms-cost.ms.ms-15::before {
+    content: "\e614";
+}
+.ms-16 {
+    margin-inline-start: 4rem;
+}
+.ms-16:before {
+    content: none;
+}
+.ms-cost.ms.ms-16::before {
+    content: "\e615";
+}
+.ms-17 {
+    margin-inline-start: 4.25rem;
+}
+.ms-17:before {
+    content: none;
+}
+.ms-cost.ms.ms-17::before {
+    content: "\e616";
+}
+.ms-18 {
+    margin-inline-start: 4.5rem;
+}
+.ms-18:before {
+    content: none;
+}
+.ms-cost.ms.ms-18::before {
+    content: "\e617";
+}
+.ms-19 {
+    margin-inline-start: 4.75rem;
+}
+.ms-19:before {
+    content: none;
+}
+.ms-cost.ms.ms-19::before {
+    content: "\e618";
+}
+.ms-20 {
+    margin-inline-start: 5rem;
+}
+.ms-20:before {
+    content: none;
+}
+.ms-cost.ms.ms-20::before {
+    content: "\e619";
+}

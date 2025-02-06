@@ -1,5 +1,6 @@
 @import 'mana-font/css/mana.min.css';
 @import 'keyrune/css/keyrune.min.css';
+@import 'margin-vs-mana-fixes.css';
 
 @tailwind base;
 @tailwind components;
@@ -8,8 +9,4 @@
 
 [x-cloak] {
     display: none;
-}
-
-span.mana-cost i.ms.ms-cost[class*="ms-"] {
-    margin-inline-start: 0 !important;
 }
