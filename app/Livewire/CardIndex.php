@@ -30,7 +30,7 @@ class CardIndex extends Component implements HasForms, HasTable
                 TextColumn::make('name')
                     ->sortable()
                     ->searchable()
-                    ->url(fn ($record) => 'https://scryfall.com/search?q=' . urlencode($record->name), true),
+                    ->url(fn ($record) => 'https://scryfall.com/search?q='.urlencode($record->name), true),
                 TextColumn::make('types')
                     ->sortable()
                     ->searchable(),

@@ -5,13 +5,20 @@ declare(strict_types=1);
 namespace Tests\Feature\Api;
 
 use App\Models\Card;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Sequence;
+use Laravel\Sanctum\Sanctum;
 use Tests\TestCase;
 
 class CardTest extends TestCase
 {
     public function test_can_paginate_cards(): void
     {
+        Sanctum::actingAs(
+            User::factory()->create(),
+            ['*']
+        );
+
         Card::factory()->count(10)->create();
         $this->assertDatabaseCount('cards', 10);
 
@@ -43,6 +50,11 @@ class CardTest extends TestCase
 
     public function test_can_search_for_cards(): void
     {
+        Sanctum::actingAs(
+            User::factory()->create(),
+            ['*']
+        );
+
         Card::factory()
             ->count(5)
             ->state(new Sequence(
@@ -53,6 +65,7 @@ class CardTest extends TestCase
                 ['name' => 'Swordsworn Cavalier', 'colors' => ['W']],
             ))
             ->create();
+        $this->assertDatabaseCount('cards', 5);
 
         $response = $this->graphQL('
             {
@@ -68,5 +81,22 @@ class CardTest extends TestCase
         $cards = $response->json('data.cardSearch');
 
         $this->assertCount(3, $cards);
+    }
+
+    public function test_deny_public_access(): void
+    {
+        Card::factory()->count(3)->create();
+        $this->assertDatabaseCount('cards', 3);
+
+        $response = $this->graphQL('
+            {
+              cardSearch(name: "dragon", colors: ["R", "U"]) {
+                id
+                name
+                type
+                colors
+              }
+            }
+        ')->assertUnauthorized();
     }
 }
